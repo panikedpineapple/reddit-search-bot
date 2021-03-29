@@ -1,4 +1,6 @@
 import sys
+import os
+import json
 
 import settings
 import discord
@@ -34,6 +36,11 @@ def main():
             return
 
         this.running = True
+
+        if not os.path.isfile('watchlist.json'):
+            watchlist = {'watchlist' : []}
+            with open('watchlist.json', 'w') as d:
+                json.dump(watchlist,d)
 
         # Set the playing status
         if settings.NOW_PLAYING:
