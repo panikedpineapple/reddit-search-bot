@@ -41,7 +41,7 @@ class Newnews(BaseCommand):
         time_list = ['hour', 'day', 'month', 'year', 'all']
         if full[0].lower() in time_list:
             payload['t'] = full[0].lower()
-            print(payload)
+            term = term[1:]
         res = requests.get(url=f'{settings.REDDIT_ENDPOINT}{ep}.json', params=payload, headers = {'User-Agent' : 'MyApi/0.0.1'})
         # with open('data.json', 'w') as d:
         #     json.dump(res.json(), d)
