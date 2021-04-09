@@ -37,6 +37,14 @@ class News(BaseCommand):
         }
         if r:
             payload['restrict_sr'] = True
+
+        # TO CHECK IF SORT BY TIME
+        time_list = ['hour', 'day', 'month', 'year', 'all']
+        if full[0].lower() in time_list:
+            payload['t'] = full[0].lower()
+            print(payload)
+
+
         res = requests.get(url=f'{settings.REDDIT_ENDPOINT}{ep}.json', params=payload, headers = {'User-Agent' : 'MyApi/0.0.1'})
         # with open('data.json', 'w') as d:
         #     json.dump(res.json(), d)
